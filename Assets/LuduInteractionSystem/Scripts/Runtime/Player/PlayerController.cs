@@ -5,14 +5,19 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController m_CharacterController;
-    private float m_CameraPitch = 0f;
+    private const float k_DefaulCameraPitch = 0f;
+    private float m_CameraPitch = k_DefaulCameraPitch;
 
     [SerializeField] private Transform m_CameraTransform;
 
     [Header("Player Settings")]
-    [SerializeField] private float m_MoveSpeed = 5f;
-    [SerializeField] private float m_MouseSensitivity = 2f;
-    [SerializeField] private float m_CameraClampAngle = 85f;
+    private const float k_DefaultMoveSpeed = 5f;
+    private const float k_DefaultMouseSensitivity = 50f;
+    private const float k_DefaultCameraClampAngle = 85f;
+
+    [SerializeField] private float m_MoveSpeed = k_DefaultMoveSpeed;
+    [SerializeField] private float m_MouseSensitivity = k_DefaultMouseSensitivity;
+    [SerializeField] private float m_CameraClampAngle = k_DefaultCameraClampAngle;
 
     [Header("Input Actions")]
     [SerializeField] private InputActionReference m_MoveAction;
