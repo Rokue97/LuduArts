@@ -4,10 +4,12 @@ public class Key : MonoBehaviour, IInteractable
 {
     [SerializeField] private KeyData m_KeyData;
     [SerializeField] private string m_ObjectName;
+    [SerializeField] private AudioClip m_PickUpSfx;
     public void Interact(Inventory inventory)
     {
         if (inventory != null)
         {
+            AudioManager.Instance.PlaySfx(m_PickUpSfx);
             inventory.AddKey(m_KeyData);
             Destroy(gameObject);
         }

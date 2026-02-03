@@ -69,8 +69,10 @@ MonoBehaviour:
   m_ChestPivotTransform: {fileID: 3974623348947346513}
   m_ObjectName: Chest
   m_OpenAngle: 100
-  m_AnimationSpeed: 10
+  m_AnimationSpeed: 3
   m_HoldDuration: 4
+  m_StartSfx: {fileID: 8300000, guid: f0d78a2852432b24cb7c4dff5edf8108, type: 3}
+  m_OpenSfx: {fileID: 8300000, guid: e55573f8dd0acfa44a843cf1c739dd1b, type: 3}
 --- !u!1 &1981463410486053332
 GameObject:
   m_ObjectHideFlags: 0

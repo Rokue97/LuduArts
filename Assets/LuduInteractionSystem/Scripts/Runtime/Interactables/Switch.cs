@@ -10,7 +10,7 @@ public class Switch : MonoBehaviour, IInteractable
     [SerializeField] private string m_ObjectName;
     [SerializeField] private float m_ActiveAngle;
     [SerializeField] private float m_AnimationSpeed;
-
+    [SerializeField] private AudioClip m_ToggleSfx;
     private bool m_IsOn;
 
     private void Start()
@@ -32,6 +32,8 @@ public class Switch : MonoBehaviour, IInteractable
             OnSwitchOn.Invoke();
         else
             OnSwitchOff.Invoke();
+
+        AudioManager.Instance.PlaySfx(m_ToggleSfx);
     }
 
     public string GetPrompt(string keyName)

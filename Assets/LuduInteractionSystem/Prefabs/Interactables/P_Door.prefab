@@ -501,6 +501,9 @@ MonoBehaviour:
   m_OpenAngle: 100
   m_AnimationSpeed: 10
   m_IsInteractable: 1
+  m_DoorOpenSfx: {fileID: 8300000, guid: 54ce9753d309bc84f94dd8df3da2a71f, type: 3}
+  m_DoorUnlockSfx: {fileID: 8300000, guid: 1b5d4f49710b8c742af623cca50bae55, type: 3}
+  m_DoorLockedSfx: {fileID: 8300000, guid: 62bc137f20dc1364480f601fe8a1c538, type: 3}
   m_KeyData: {fileID: 0}
 --- !u!1 &5990217355551094262
 GameObject:

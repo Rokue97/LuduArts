@@ -10,6 +10,11 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private float m_AnimationSpeed;
     [SerializeField] private bool m_IsInteractable;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip m_DoorOpenSfx;
+    [SerializeField] private AudioClip m_DoorUnlockSfx;
+    [SerializeField] private AudioClip m_DoorLockedSfx;
+
     [Header("Locked Settings")]
     [SerializeField] private KeyData m_KeyData;
 
@@ -39,6 +44,7 @@ public class Door : MonoBehaviour, IInteractable
             return;
         }
 
+        AudioManager.Instance.PlaySfx(m_DoorOpenSfx);
         if(m_IsOpen)
             CloseDoor();
         else
@@ -84,7 +90,11 @@ public class Door : MonoBehaviour, IInteractable
         if (inventory.HasKey(m_KeyData))
         {
             m_IsLocked = false;
+            AudioManager.Instance.PlaySfx(m_DoorUnlockSfx);
+            return;
         }
+
+        AudioManager.Instance.PlaySfx(m_DoorLockedSfx);
     }
 
 }

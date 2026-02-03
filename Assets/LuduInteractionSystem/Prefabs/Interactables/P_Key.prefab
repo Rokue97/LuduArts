@@ -240,3 +240,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Key
   m_KeyData: {fileID: 11400000, guid: c49df672b7f679341835c47633bd0425, type: 2}
   m_ObjectName: 
+  m_PickUpSfx: {fileID: 8300000, guid: f0d78a2852432b24cb7c4dff5edf8108, type: 3}

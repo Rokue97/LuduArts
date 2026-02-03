@@ -125,10 +125,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2f07fd247e110469cfa141350f45ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Switch
+  OnSwitchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSwitchOff:
+    m_PersistentCalls:
+      m_Calls: []
   m_SwitchPivotTransform: {fileID: 6432914113565508088}
   m_ObjectName: Swicth
   m_ActiveAngle: 45
   m_AnimationSpeed: 7
+  m_ToggleSfx: {fileID: 8300000, guid: f0d78a2852432b24cb7c4dff5edf8108, type: 3}
 --- !u!1 &7160456448364297006
 GameObject:
   m_ObjectHideFlags: 0

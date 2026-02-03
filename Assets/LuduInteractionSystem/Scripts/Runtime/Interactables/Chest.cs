@@ -8,7 +8,8 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] private float m_OpenAngle;
     [SerializeField] private float m_AnimationSpeed;
     [SerializeField] private float m_HoldDuration;
-
+    [SerializeField] private AudioClip m_StartSfx;
+    [SerializeField] private AudioClip m_OpenSfx;
     private float m_CurrentTimer;
     private bool m_Holding;
     private bool m_IsOpen;
@@ -42,6 +43,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         m_Holding = true;
         ProgressBar.Instance.SetProgressActive(true);
+        AudioManager.Instance.PlaySfx(m_StartSfx);
     }
 
     public void CancelInteract()
@@ -65,5 +67,6 @@ public class Chest : MonoBehaviour, IInteractable
     {
         m_IsOpen = true;
         ProgressBar.Instance.SetProgressActive(false);
+        AudioManager.Instance.PlaySfx(m_OpenSfx);
     }
 }
