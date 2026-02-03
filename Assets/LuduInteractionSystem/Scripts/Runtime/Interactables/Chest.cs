@@ -51,9 +51,9 @@ public class Chest : MonoBehaviour, IInteractable
         ProgressBar.Instance.SetProgressActive(false);
     }
 
-    public string GetPromptName()
+    public string GetPrompt(string keyName)
     {
-        return m_ObjectName;
+        return $"Hold {keyName} to open up {m_ObjectName}";
     }
 
     public bool CanInteract()

@@ -15,8 +15,8 @@ public class Key : MonoBehaviour, IInteractable
         Debug.Log("Interacted with key: " + m_KeyData.KeyName);
     }
 
-    public string GetPromptName()
+    public string GetPrompt(string keyName)
     {
-        return m_ObjectName;
+        return $"Press {keyName} to pick up {m_ObjectName}";
     }
 }

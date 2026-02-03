@@ -4,7 +4,8 @@ public interface IInteractable
 {
     void Interact(Inventory inventory);
     void CancelInteract() { }
-    string GetPromptName();
+    string GetPrompt(string keyName);
     bool CanInteract() => true;
     bool IsLocked() => false;
+    string GetLockedPrompt() => "";
 }

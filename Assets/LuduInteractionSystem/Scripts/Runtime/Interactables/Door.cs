@@ -45,9 +45,14 @@ public class Door : MonoBehaviour, IInteractable
             OpenDoor();
     }
 
-    public string GetPromptName()
+    public string GetPrompt(string keyName)
     {
-        return m_ObjectName;
+        if (m_IsOpen)
+        {
+            return $"Press {keyName} to close {m_ObjectName}";
+        }
+
+        return $"Press {keyName} to open {m_ObjectName}";
     }
 
     public bool CanInteract()
@@ -57,6 +62,11 @@ public class Door : MonoBehaviour, IInteractable
     public bool IsLocked()
     {
         return m_IsLocked;
+    }
+
+    public string GetLockedPrompt()
+    {
+        return $"{m_ObjectName} is locked.";
     }
 
     private void OpenDoor()

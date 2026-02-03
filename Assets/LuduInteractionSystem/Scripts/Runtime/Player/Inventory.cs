@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public void AddKey(KeyData keyData)
     {
         m_OwnedKeys.Add(keyData);
+        InventoryUI.Instance.AddItem(keyData);
     }
 
     public bool HasKey(KeyData keyData)

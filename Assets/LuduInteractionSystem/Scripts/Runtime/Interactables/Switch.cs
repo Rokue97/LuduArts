@@ -34,9 +34,13 @@ public class Switch : MonoBehaviour, IInteractable
             OnSwitchOff.Invoke();
     }
 
-    public string GetPromptName()
+    public string GetPrompt(string keyName)
     {
-        return m_ObjectName;
+        if (m_IsOn)
+        {
+            return $"Press {keyName} to deactivate {m_ObjectName}";
+        }
+        return $"Press {keyName} to activate {m_ObjectName}";
     }
 
 }

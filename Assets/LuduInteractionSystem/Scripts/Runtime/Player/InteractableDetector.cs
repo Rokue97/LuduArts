@@ -17,13 +17,15 @@ public class InteractableDetector : MonoBehaviour
 
     private Inventory m_Inventory;
     private IInteractable m_HitInteractable;
-
+    private string m_KeyName;
 
     private void Start()
     {
         m_InteractAction.action.performed += OnInteractPerformed;
         m_InteractAction.action.canceled += OnInteractCanceled;
         m_Inventory = GetComponent<Inventory>();
+
+        m_KeyName = m_InteractAction.action.GetBindingDisplayString();
     }
 
     private void Update()
@@ -50,11 +52,11 @@ public class InteractableDetector : MonoBehaviour
             {
                 if (interactable.IsLocked())
                 {
-                    InteractionPrompt.Instance.UpdatePrompt(interactable.GetPromptName() + " is locked.");
+                    InteractionPrompt.Instance.UpdatePrompt(interactable.GetLockedPrompt());
                 }
                 else
                 {
-                    InteractionPrompt.Instance.UpdatePrompt("Press F to interact with " + interactable.GetPromptName());
+                    InteractionPrompt.Instance.UpdatePrompt(interactable.GetPrompt(m_KeyName));
                 }
 
                 m_HitInteractable = interactable;
@@ -87,7 +89,7 @@ public class InteractableDetector : MonoBehaviour
         {
             m_HitInteractable.Interact(m_Inventory);
             if(!m_HitInteractable.IsLocked())
-                InteractionPrompt.Instance.UpdatePrompt("Press F to interact with " + m_HitInteractable.GetPromptName());
+                InteractionPrompt.Instance.UpdatePrompt(m_HitInteractable.GetPrompt(m_KeyName));
         }
         else
         {
