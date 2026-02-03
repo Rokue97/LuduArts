@@ -496,6 +496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
   m_DoorPivotTransform: {fileID: 8617623029865405160}
+  m_KeyData: {fileID: 0}
+  m_ObjectName: Door
 --- !u!1 &5990217355551094262
 GameObject:
   m_ObjectHideFlags: 0
