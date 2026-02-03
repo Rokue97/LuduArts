@@ -7,6 +7,12 @@ public class Key : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip m_PickUpSfx;
     public void Interact(Inventory inventory)
     {
+        if (m_KeyData == null)
+        {
+            Debug.LogError($"{gameObject.name} Missing Key Data!");
+            return;
+        }
+
         if (inventory != null)
         {
             AudioManager.Instance.PlaySfx(m_PickUpSfx);

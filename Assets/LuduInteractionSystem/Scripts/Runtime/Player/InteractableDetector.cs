@@ -21,11 +21,20 @@ public class InteractableDetector : MonoBehaviour
 
     private void Start()
     {
-        m_InteractAction.action.performed += OnInteractPerformed;
-        m_InteractAction.action.canceled += OnInteractCanceled;
         m_Inventory = GetComponent<Inventory>();
 
-        m_KeyName = m_InteractAction.action.GetBindingDisplayString();
+    }
+
+    private void OnEnable()
+    {
+        if (m_InteractAction != null && m_InteractAction.action != null)
+        {
+            m_InteractAction.action.Enable();
+            m_InteractAction.action.performed += OnInteractPerformed;
+            m_InteractAction.action.canceled += OnInteractCanceled;
+
+            m_KeyName = m_InteractAction.action.GetBindingDisplayString();
+        }
     }
 
     private void Update()
@@ -70,6 +79,15 @@ public class InteractableDetector : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * m_InteractableDetectionDistance, Color.red);
     }
 
+    private void OnDisable()
+    {
+        if (m_InteractAction != null && m_InteractAction.action != null)
+        {
+            m_InteractAction.action.performed -= OnInteractPerformed;
+            m_InteractAction.action.canceled -= OnInteractCanceled;
+        }
+    }
+
     private void OnInteractCanceled(InputAction.CallbackContext obj)
     {
         Debug.Log("InteractCanceled");
@@ -96,4 +114,6 @@ public class InteractableDetector : MonoBehaviour
             Debug.LogWarning("No interactable to perform interaction with.", this);
         }
     }
+
+
 }

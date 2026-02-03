@@ -43,7 +43,12 @@ public class Chest : MonoBehaviour, IInteractable
     {
         m_Holding = true;
         ProgressBar.Instance.SetProgressActive(true);
-        AudioManager.Instance.PlaySfx(m_StartSfx);
+
+        if(m_StartSfx != null)
+            AudioManager.Instance.PlaySfx(m_StartSfx);
+        else
+            Debug.LogError($"{gameObject.name} Missing Start SFX!");
+
     }
 
     public void CancelInteract()
@@ -67,6 +72,10 @@ public class Chest : MonoBehaviour, IInteractable
     {
         m_IsOpen = true;
         ProgressBar.Instance.SetProgressActive(false);
-        AudioManager.Instance.PlaySfx(m_OpenSfx);
+
+        if (m_OpenSfx != null)
+            AudioManager.Instance.PlaySfx(m_OpenSfx);
+        else
+            Debug.LogError($"{gameObject.name} Missing Open SFX!");
     }
 }

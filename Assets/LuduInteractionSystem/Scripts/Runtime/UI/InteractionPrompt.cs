@@ -19,11 +19,12 @@ public class InteractionPrompt : MonoBehaviour
 
     public void UpdatePrompt(string prompt)
     {
+        m_PromptText.gameObject.SetActive(true);
         m_PromptText.text = prompt;
     }
 
     public void HidePrompt()
     {
-        m_PromptText.text = string.Empty;
+        m_PromptText.gameObject.SetActive(false);
     }
 }

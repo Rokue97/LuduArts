@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

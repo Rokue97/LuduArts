@@ -44,11 +44,19 @@ public class Door : MonoBehaviour, IInteractable
             return;
         }
 
-        AudioManager.Instance.PlaySfx(m_DoorOpenSfx);
         if(m_IsOpen)
             CloseDoor();
         else
             OpenDoor();
+
+        if(m_DoorOpenSfx != null)
+        {
+            AudioManager.Instance.PlaySfx(m_DoorOpenSfx);
+        }
+        else
+        {
+            Debug.LogError($"{gameObject.name} Missing Door Open SFX!");
+        }
     }
 
     public string GetPrompt(string keyName)
@@ -90,11 +98,26 @@ public class Door : MonoBehaviour, IInteractable
         if (inventory.HasKey(m_KeyData))
         {
             m_IsLocked = false;
-            AudioManager.Instance.PlaySfx(m_DoorUnlockSfx);
+            if (m_DoorUnlockSfx != null)
+            {
+                AudioManager.Instance.PlaySfx(m_DoorUnlockSfx);
+            }
+            else
+            {
+                Debug.LogError($"{gameObject.name} Missing Door Unlock SFX!");
+            }
+
             return;
         }
 
-        AudioManager.Instance.PlaySfx(m_DoorLockedSfx);
+        if (m_DoorLockedSfx != null)
+        {
+            AudioManager.Instance.PlaySfx(m_DoorLockedSfx);
+        }
+        else
+        {
+            Debug.LogError($"{gameObject.name} Missing Door Locked SFX!");
+        }
     }
 
 }

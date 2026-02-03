@@ -11,13 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform m_CameraTransform;
 
     [Header("Player Settings")]
-    private const float k_DefaultMoveSpeed = 5f;
-    private const float k_DefaultMouseSensitivity = 50f;
-    private const float k_DefaultCameraClampAngle = 85f;
-
-    [SerializeField] private float m_MoveSpeed = k_DefaultMoveSpeed;
-    [SerializeField] private float m_MouseSensitivity = k_DefaultMouseSensitivity;
-    [SerializeField] private float m_CameraClampAngle = k_DefaultCameraClampAngle;
+    [SerializeField] private float m_MoveSpeed = 5f;
+    [SerializeField] private float m_MouseSensitivity = 50f;
+    [SerializeField] private float m_CameraClampAngle = 85f;
 
     [Header("Input Actions")]
     [SerializeField] private InputActionReference m_MoveAction;
