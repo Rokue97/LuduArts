@@ -6,6 +6,9 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private Transform m_DoorPivotTransform;
     [SerializeField] private string m_ObjectName;
     [SerializeField] private bool m_IsLocked;
+    [SerializeField] private float m_OpenAngle;
+    [SerializeField] private float m_AnimationSpeed;
+    [SerializeField] private bool m_IsInteractable;
 
     [Header("Locked Settings")]
     [SerializeField] private KeyData m_KeyData;
@@ -14,8 +17,16 @@ public class Door : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        m_IsOpen = false;
+
         if(m_IsLocked && m_KeyData == null)
-            Debug.LogError("Door is locked but no KeyData is assigned.", this);
+            Debug.LogWarning("Door is locked but no KeyData is assigned.", this);
+    }
+
+    private void Update()
+    {
+        m_DoorPivotTransform.localRotation = Quaternion.Euler(0, m_IsOpen ? Mathf.LerpAngle(m_DoorPivotTransform.localRotation.eulerAngles.y, m_OpenAngle, Time.deltaTime * m_AnimationSpeed) :
+            Mathf.LerpAngle(m_DoorPivotTransform.localRotation.eulerAngles.y, 0, Time.deltaTime * m_AnimationSpeed), 0);
     }
 
     public void Interact(Inventory inventory)
@@ -41,7 +52,21 @@ public class Door : MonoBehaviour, IInteractable
 
     public bool CanInteract()
     {
-        return !m_IsLocked;
+        return m_IsInteractable;
+    }
+    public bool IsLocked()
+    {
+        return m_IsLocked;
+    }
+
+    private void OpenDoor()
+    {
+        m_IsOpen = true;
+    }
+
+    private void CloseDoor()
+    {
+        m_IsOpen = false;
     }
 
     private void TryUnlockDoor(Inventory inventory)
@@ -51,18 +76,5 @@ public class Door : MonoBehaviour, IInteractable
             m_IsLocked = false;
         }
     }
-
-    private void OpenDoor()
-    {
-        m_IsOpen = true;
-        m_DoorPivotTransform.localRotation = Quaternion.Euler(0, 90, 0);
-    }
-
-    private void CloseDoor()
-    {
-        m_IsOpen = false;
-        m_DoorPivotTransform.localRotation = Quaternion.Euler(0, 0, 0);
-    }
-
 
 }
