@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 907a6e8272d823a408008482bfc9b6f4, type: 3}
-  m_Name: RedKey
+  m_Name: SO_GreenKey
   m_EditorClassIdentifier: Assembly-CSharp::KeyData
-  KeyName: Red Key
+  KeyName: Green Key
